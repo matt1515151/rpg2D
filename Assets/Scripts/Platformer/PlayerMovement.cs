@@ -6,12 +6,23 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Shoot shoot;
+    public GameObject hookshot;
     [Space]
     public float moveSpeed;
     public float jumpForce;
+    public float pullForce = 1f;
 
+    bool pulling;
     bool grounded;
     float movement;
+    bool facingRight;
+    Hookshot hookshotScript;
+
+    private void Start()
+    {
+        hookshotScript = hookshot.GetComponent<Hookshot>();
+    }
 
     void Update()
     {
@@ -27,10 +38,25 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+        if (Input.GetMouseButton(0) && hookshotScript.isGrounded)
+        {
+            pulling = true;
+        }
+        else
+        {
+            pulling = false;
+        }
     }
 
     void FixedUpdate()
     {
         rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
+
+        if (pulling)
+        {
+            Vector2 pull = hookshot.transform.position - new Vector3(transform.position.x, transform.position.y);
+            Debug.Log("pull!");
+            rb.velocity += pull * pullForce / Mathf.Sqrt(pull.magnitude);
+        }
     }
 }
