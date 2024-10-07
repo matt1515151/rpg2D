@@ -315,7 +315,7 @@ MonoBehaviour:
   playerTeamPrefabs:
   - {fileID: 3367671420720022192, guid: 8f82514df8a60f14db23d6e9044ba018, type: 3}
   enemyTeamPrefabs:
-  - {fileID: 3754371878761275188, guid: 07d99a349788657448b015350330eec1, type: 3}
+  - {fileID: 3367671420720022192, guid: 8f82514df8a60f14db23d6e9044ba018, type: 3}
 --- !u!4 &1757545078
 Transform:
   m_ObjectHideFlags: 0

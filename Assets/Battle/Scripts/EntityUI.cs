@@ -14,30 +14,25 @@ public class EntityUI : MonoBehaviour
     public GameObject buttons;
     [Space]
     // ui placement adjustments
-    public float statUIoffset = 1.5f;
+    public float statUIoffset = 2.5f;
     public float buttonsOffset = -2f;
 
-    [SerializeField] StatsUI entityStatsUI;
+    StatsUI entityStatsUI;
 
     // the parent entity, shortened to E for ease of use :3
-    [SerializeField] Entity entity;
+    Entity E;
 
     public void Awake()
     {
-        entity = GetComponent<Entity>();
+        E = GetComponent<Entity>();
     }
 
     public void SetupUI()
     {
-        // THIS DOESNT FUCKING WORK AND I DONT KNOW HOW TO FIX IT
-        // todo: rework
-
         // create a stat display
         entityStatsUI = Instantiate<GameObject>(statsUI,
             transform.position + new Vector3(0f, statUIoffset),
             Quaternion.identity).GetComponent<StatsUI>();
-
-        entity.DebugTest();
 
         UpdateStats();
     }
@@ -45,8 +40,8 @@ public class EntityUI : MonoBehaviour
     public void UpdateStats()
     {
         // put the stats in the texts
-        entityStatsUI.SetHealth(entity.entityBase.currentHP, entity.entityBase.statHP);
-        entityStatsUI.SetName(entity.entityBase.entityName);
-        entityStatsUI.SetAttack(entity.entityBase.statATK);
+        entityStatsUI.SetHealth(E.entityBase.currentHP, E.entityBase.statHP);
+        entityStatsUI.SetName(E.entityBase.entityName);
+        entityStatsUI.SetAttack(E.entityBase.statATK);
     }
 }

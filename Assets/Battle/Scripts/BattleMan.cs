@@ -1,5 +1,5 @@
-
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -19,8 +19,8 @@ public class BattleMan : MonoBehaviour
     [SerializeField] GameObject[] playerTeamPrefabs;
     [SerializeField] GameObject[] enemyTeamPrefabs;
 
-    Entity[] playerTeam;
-    Entity[] enemyTeam;
+    List<Entity> playerTeam = new();
+    List<Entity> enemyTeam = new();
 
     private void Start()
     {
@@ -31,19 +31,19 @@ public class BattleMan : MonoBehaviour
 
     void SetupBattle()
     {
+
         // spawn everything
         int x = 0; 
         foreach (GameObject e in playerTeamPrefabs)
         {
-            GameObject temp = Instantiate<GameObject>(e);
-            playerTeam[x] = temp.GetComponent<Entity>();
+            playerTeam.Add(Instantiate<GameObject>(e).GetComponent<Entity>());
             playerTeam[x].Setup(Team.Left);
             x++;
         }
         x = 0;
         foreach (GameObject e in enemyTeamPrefabs)
         {
-            enemyTeam[x] = Instantiate<GameObject>(e).GetComponent<Entity>();
+            enemyTeam.Add(Instantiate<GameObject>(e).GetComponent<Entity>());
             enemyTeam[x].Setup(Team.Right);
             x++;
         }

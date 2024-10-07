@@ -9,8 +9,6 @@ public class EntityBase : MonoBehaviour
     public int statHP, statATK, statDEF, currentHP;
     public string entityName;
 
-    public Sprite sprite;
-
     Entity E;
 
     private void Start()

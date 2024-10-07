@@ -12,7 +12,7 @@ public enum Team
 
 public class Entity : MonoBehaviour
 {
-    Team team;
+    public Team team;
 
     // every entity behaviour script
     public EntityUI entityUI;
@@ -32,13 +32,13 @@ public class Entity : MonoBehaviour
         if (!TryGetComponent<EntityAudio>(out entityAudio))
         { throw new Exception(name + " is missing an EntityAudio!"); }
 
-        entityUI.SetupUI();
-
-        // set the sprite
-        GetComponent<SpriteRenderer>().sprite = entityBase.sprite;
-
         // set its team
         this.team = team;
+
+        entityUI.SetupUI();
+
+        entityAnimator.SetupSprite();
+
         // put me in my grave
         // i mean place
         switch (team)

@@ -5,13 +5,16 @@ using TMPro;
 
 public class StatsUI : MonoBehaviour
 {
-    public TextMeshProUGUI healthUI, nameUI, atkUI;
+    public TextMeshPro healthUI, nameUI, atkUI;
 
-    private void Start()
+    private void Awake()
     {
-        healthUI = transform.Find("health").GetComponent<TextMeshProUGUI>();
-        nameUI = transform.Find("name").GetComponent<TextMeshProUGUI>();
-        atkUI = transform.Find("atk").GetComponent<TextMeshProUGUI>();
+        if(!transform.Find("health").TryGetComponent<TextMeshPro>(out healthUI))
+        {
+            Debug.Log("nope");
+        }
+        nameUI = transform.Find("name").GetComponent<TextMeshPro>();
+        atkUI = transform.Find("atk").GetComponent<TextMeshPro>();
     }
 
     public void SetHealth(int health, int maxHealth)
