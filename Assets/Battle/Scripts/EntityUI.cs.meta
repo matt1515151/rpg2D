@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 99af45bc886842a419cb1f5a30a648be
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - statsUI: {fileID: 5021921157751105163, guid: b5e450d076b8d394ca17cd7aba5ab424, type: 3}
+  - buttons: {fileID: 1812096935896785327, guid: f4aba974a91912045a39d4e65a0ef4dd, type: 3}
+  - entityStatsUI: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
