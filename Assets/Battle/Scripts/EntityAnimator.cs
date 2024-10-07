@@ -9,7 +9,7 @@ public class EntityAnimator : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite sprite;
 
-
+    // the parent entity, shortened to E for ease of use :3
     Entity E;
 
     private void Awake()

@@ -7,22 +7,14 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public Shoot shoot;
-    public GameObject hookshot;
     [Space]
     public float moveSpeed;
     public float jumpForce;
-    public float pullForce = 1f;
+    public float swingSpeedMod, airSpeedMod;
 
-    bool pulling;
     bool grounded;
+    public bool wasGrappling;
     float movement;
-    bool facingRight;
-    Hookshot hookshotScript;
-
-    private void Start()
-    {
-        hookshotScript = hookshot.GetComponent<Hookshot>();
-    }
 
     void Update()
     {
@@ -38,24 +30,26 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetMouseButton(0) && hookshotScript.isGrounded)
+
+        if (grounded)
         {
-            pulling = true;
-        }
-        else
-        {
-            pulling = false;
+            wasGrappling = false;
         }
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
-
-        if (pulling)
+        if (shoot.isGrappling)
         {
-            Vector2 pull = hookshot.transform.position - new Vector3(transform.position.x, transform.position.y);
-            rb.velocity += pull * pullForce / Mathf.Sqrt(pull.magnitude);
+            rb.velocity += new Vector2(movement * moveSpeed * swingSpeedMod, 0f);
+        }
+        else if (wasGrappling)
+        {
+            rb.velocity += new Vector2(movement * moveSpeed * airSpeedMod, 0f);
+        }
+        else
+        {
+            rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
         }
     }
 }

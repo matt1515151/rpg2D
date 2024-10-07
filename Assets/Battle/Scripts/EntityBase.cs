@@ -9,6 +9,7 @@ public class EntityBase : MonoBehaviour
     public int statHP, statATK, statDEF, currentHP;
     public string entityName;
 
+    // the parent entity, shortened to E for ease of use :3
     Entity E;
 
     private void Start()
