@@ -9,6 +9,8 @@ public class EntityAnimator : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite sprite;
 
+    Animator animator;
+
     // the parent entity, shortened to E for ease of use :3
     Entity E;
 
@@ -16,6 +18,7 @@ public class EntityAnimator : MonoBehaviour
     {
         E = GetComponent<Entity>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     public void SetupSprite()
@@ -30,5 +33,10 @@ public class EntityAnimator : MonoBehaviour
                 GetComponent<SpriteRenderer>().flipX = true;
                 break;
         }
+    }
+
+    public void PlayAnimation(string animation)
+    {
+        animator.SetTrigger(animation);
     }
 }

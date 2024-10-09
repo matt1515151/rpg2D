@@ -11,7 +11,6 @@ public class EntityUI : MonoBehaviour
 
     // prefabs
     public GameObject statsUI;
-    public GameObject buttons;
     [Space]
     // ui placement adjustments
     public float statUIoffset = 2.5f;

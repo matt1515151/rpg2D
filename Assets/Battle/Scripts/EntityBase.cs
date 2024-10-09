@@ -26,11 +26,14 @@ public class EntityBase : MonoBehaviour
         {
             currentHP = statHP;
         }
+
+        E.entityUI.UpdateStats();
     }
 
     public void TakeDamage(int damageAmount)
     {
-        currentHP += damageAmount;
+        currentHP -= damageAmount;
+        E.entityUI.UpdateStats();
 
         if (currentHP <= 0)
         {

@@ -35,10 +35,6 @@ public class Entity : MonoBehaviour
         // set its team
         this.team = team;
 
-        entityUI.SetupUI();
-
-        entityAnimator.SetupSprite();
-
         // put me in my grave
         // i mean place
         switch (team)
@@ -51,12 +47,17 @@ public class Entity : MonoBehaviour
                 break;
         }
 
+        entityUI.SetupUI();
+
+        entityAnimator.SetupSprite();
+
         // initialise health value
         entityBase.currentHP = entityBase.statHP;
     }
 
-    public void DebugTest()
+    public void Attack(Entity target, int damage)
     {
-        Debug.Log("test successful lmao");
+        // entityAnimator.PlayAnimation("attack");
+        target.entityBase.TakeDamage(damage);
     }
 }

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Serialization;
 
 public enum BattleState
@@ -48,21 +50,43 @@ public class BattleMan : MonoBehaviour
             x++;
         }
 
+        // play some intro animations
 
-        StartPlayerTurn();
+        StartCoroutine(StartPlayerTurn());
     }
 
-    void StartPlayerTurn()
+    IEnumerator StartPlayerTurn()
     {
         state = BattleState.PlayerTurn;
-        // recieve input
-        state = BattleState.PlayerInput;
-
-        StartEnemyTurn();
+        Debug.Log("player's turn starts");
+        yield return new WaitForSeconds(2);
     }
 
-    void StartEnemyTurn()
+    IEnumerator PlayerAction(int whatever)
+    {
+        if (state == BattleState.PlayerTurn)
+        {
+            state = BattleState.PlayerInput;
+            // perform the move
+            Debug.Log("player presses button " + whatever);
+
+            playerTeam[0].Attack(enemyTeam[0], playerTeam[0].entityBase.statATK);
+
+            yield return new WaitForSeconds(2);
+            StartCoroutine(StartEnemyTurn());
+        }
+    }
+
+    IEnumerator StartEnemyTurn()
     {
         state = BattleState.EnemyTurn;
+        Debug.Log("enemy fuckin does something");
+        yield return new WaitForSeconds(4);
+        StartCoroutine(StartPlayerTurn());
+    }
+
+    public void ButtonPress(int whatever)
+    {
+        StartCoroutine(PlayerAction(whatever));
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5085685146464452051}
   - component: {fileID: 1884010583521410584}
   - component: {fileID: -8044723006837188113}
+  - component: {fileID: 7611685318382959812}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -136,7 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statsUI: {fileID: 5021921157751105163, guid: a2e74ca15c9b8b24f8c1337ea4720f75, type: 3}
-  buttons: {fileID: 1812096935896785327, guid: f4aba974a91912045a39d4e65a0ef4dd, type: 3}
   statUIoffset: 2.5
   buttonsOffset: -2
 --- !u!114 &1884010583521410584
@@ -164,3 +164,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1617324c734acd1458525b027e557d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &7611685318382959812
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3367671420720022192}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be92147cb1cb1024490494a8ce78566e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

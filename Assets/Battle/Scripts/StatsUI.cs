@@ -9,10 +9,7 @@ public class StatsUI : MonoBehaviour
 
     private void Awake()
     {
-        if(!transform.Find("health").TryGetComponent<TextMeshPro>(out healthUI))
-        {
-            Debug.Log("nope");
-        }
+        healthUI = transform.Find("health").GetComponent<TextMeshPro>();
         nameUI = transform.Find("name").GetComponent<TextMeshPro>();
         atkUI = transform.Find("atk").GetComponent<TextMeshPro>();
     }
