@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -8044723006837188113}
   - component: {fileID: 7611685318382959812}
   m_Layer: 0
-  m_Name: Square
+  m_Name: blubert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,6 +107,9 @@ MonoBehaviour:
   entityBase: {fileID: 0}
   entityAnimator: {fileID: 0}
   entityAudio: {fileID: 0}
+  cards:
+  - {fileID: 2536978758072291000, guid: c99483984415cb24ab7c53455b20b5a2, type: 3}
+  battleMan: {fileID: 0}
 --- !u!114 &-2506883103147679205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99af45bc886842a419cb1f5a30a648be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsUI: {fileID: 5021921157751105163, guid: a2e74ca15c9b8b24f8c1337ea4720f75, type: 3}
+  statsUI: {fileID: 5021921157751105163, guid: b5e450d076b8d394ca17cd7aba5ab424, type: 3}
   statUIoffset: 2.5
   buttonsOffset: -2
 --- !u!114 &1884010583521410584

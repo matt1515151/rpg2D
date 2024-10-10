@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 public enum BattleState
 {
@@ -81,6 +78,9 @@ public class BattleMan : MonoBehaviour
     {
         state = BattleState.EnemyTurn;
         Debug.Log("enemy fuckin does something");
+
+        enemyTeam[0].Attack(playerTeam[0], enemyTeam[0].entityBase.statATK);
+
         yield return new WaitForSeconds(4);
         StartCoroutine(StartPlayerTurn());
     }

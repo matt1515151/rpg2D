@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEditor;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class EntityUI : MonoBehaviour
 {
@@ -17,6 +14,7 @@ public class EntityUI : MonoBehaviour
     public float buttonsOffset = -2f;
 
     StatsUI entityStatsUI;
+    List<GameObject> cards;
 
     // the parent entity, shortened to E for ease of use :3
     Entity E;

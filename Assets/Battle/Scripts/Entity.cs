@@ -1,13 +1,10 @@
 using UnityEngine;
-using TMPro;
 using System;
-using UnityEngine.UIElements;
-using UnityEngine.UI;
 
 public enum Team
 {
-    Left,
-    Right
+    Left = -1,
+    Right = 1
 }
 
 public class Entity : MonoBehaviour
@@ -19,9 +16,15 @@ public class Entity : MonoBehaviour
     public EntityBase entityBase;
     public EntityAnimator entityAnimator;
     public EntityAudio entityAudio;
+    [Space]
+    public GameObject[] cards = new GameObject[4];
+
+    [SerializeField]BattleMan battleMan;
 
     public void Setup(Team team)
     {
+        battleMan = FindFirstObjectByType<BattleMan>();
+
         // idiot check
         if(!TryGetComponent<EntityBase>(out entityBase))
         { throw new Exception(name + " is missing an EntityBase!"); }
@@ -37,27 +40,26 @@ public class Entity : MonoBehaviour
 
         // put me in my grave
         // i mean place
-        switch (team)
-        {
-            case Team.Left:
-                transform.position = new Vector3(-5f, 0f);
-                break;
-            case Team.Right:
-                transform.position = new Vector3(5f, 0f);
-                break;
-        }
+        transform.position = new Vector2(5f * (int) team, 0f);
+
+        // initialise health value
+        entityBase.currentHP = entityBase.statHP;
 
         entityUI.SetupUI();
 
         entityAnimator.SetupSprite();
-
-        // initialise health value
-        entityBase.currentHP = entityBase.statHP;
     }
 
     public void Attack(Entity target, int damage)
     {
-        // entityAnimator.PlayAnimation("attack");
+        // go to target
+        // play attack animation
         target.entityBase.TakeDamage(damage);
+    }
+
+    public void Heal(int healAmount)
+    {
+        // play heal animation
+        entityBase.Heal(healAmount);
     }
 }

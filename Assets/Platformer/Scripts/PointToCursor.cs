@@ -6,10 +6,14 @@ using UnityEngine.Rendering;
 public class PointToCursor : MonoBehaviour
 {
     public Vector2 mousePos;
+    public Vector2 rotateTarget;
     public Shoot shoot;
+    public Transform shootPoint;
 
     void Update()
     {
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+
         if (shoot.isGrappling)
         {
             ToHookPoint();
@@ -18,13 +22,15 @@ public class PointToCursor : MonoBehaviour
         {
             ToCursor();
         }
+
+        transform.Find("Gun").GetComponent<SpriteRenderer>().flipY = rotateTarget.x < 0;
     }
 
     void ToCursor()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        rotateTarget = mousePos;
 
-        float targetAngle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg - 90f;
+        float targetAngle = Mathf.Atan2(rotateTarget.y, rotateTarget.x) * Mathf.Rad2Deg - 90f;
 
         float rotateAmount = targetAngle - transform.rotation.eulerAngles.z;
 
@@ -33,9 +39,9 @@ public class PointToCursor : MonoBehaviour
 
     void ToHookPoint()
     {
-        Vector2 targetPos = new Vector3(shoot.GetGrapplePoint().x, shoot.GetGrapplePoint().y) - transform.position;
+        rotateTarget = new Vector3(shoot.GetGrapplePoint().x, shoot.GetGrapplePoint().y) - transform.position;
 
-        float targetAngle = Mathf.Atan2(targetPos.y, targetPos.x) * Mathf.Rad2Deg - 90f;
+        float targetAngle = Mathf.Atan2(rotateTarget.y, rotateTarget.x) * Mathf.Rad2Deg - 90f;
 
         float rotateAmount = targetAngle - transform.rotation.eulerAngles.z;
 

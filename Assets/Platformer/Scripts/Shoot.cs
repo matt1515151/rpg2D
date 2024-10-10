@@ -62,7 +62,7 @@ public class Shoot : MonoBehaviour
     void StartGrapple()
     {
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(player.position, pointToCursor.mousePos, maxDist, grappleableSurface))
+        if (hit = Physics2D.Raycast(player.position, pointToCursor.rotateTarget, maxDist, grappleableSurface))
         {
             isGrappling = true;
             state = Grapple.FirstClick;

@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Space]
     public float moveSpeed;
     public float jumpForce;
-    public float swingSpeedMod, airSpeedMod;
+    public float swingSpeedMod, airSpeedMod, airFriction;
 
     bool grounded;
     public bool wasGrappling;
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             wasGrappling = false;
         }
+        GetComponent<SpriteRenderer>().flipX = shoot.pointToCursor.rotateTarget.x < 0;
     }
 
     void FixedUpdate()
@@ -46,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         else if (wasGrappling)
         {
             rb.velocity += new Vector2(movement * moveSpeed * airSpeedMod, 0f);
+            rb.velocity *= airFriction;
         }
         else
         {
