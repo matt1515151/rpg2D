@@ -5,27 +5,21 @@ using UnityEngine.UIElements;
 
 public class Shoot : MonoBehaviour
 {
-    enum Grapple
-    {
-        NotGrappling,
-        FirstClick,
-        SecondClick
-    }
-
-    Grapple state = Grapple.NotGrappling;
 
     LineRenderer lineRenderer;
     Vector2 grapplePoint;
     SpringJoint2D joint;
+    Transform hitEnemy;
 
     public PointToCursor pointToCursor;
     public LayerMask grappleableSurface;
     public Transform shootPoint, player;
 
     public float maxDist = 10f, minDist = 1f;
+    public float pullSpeed = 2f;
+    // random variables to change how the swing feels
     public float dampingRatio;
     public float frequency;
-    public float pullSpeed = 2f;
 
     public bool isGrappling;
 
@@ -36,21 +30,21 @@ public class Shoot : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && state == Grapple.NotGrappling)
+        if (Input.GetMouseButtonDown(0))
         {
             StartGrapple();
         }
-        else if (Input.GetMouseButtonUp(0) && state == Grapple.FirstClick)
+        else if (Input.GetMouseButtonUp(0))
         {
-            state = Grapple.SecondClick;
+            StopGrapple();
         }
-        else if (Input.GetMouseButton(0) && state == Grapple.SecondClick)
+        if (Input.GetMouseButton(1) && isGrappling)
         {
             Retract();
         }
-        else if (Input.GetMouseButtonUp(0) && state == Grapple.SecondClick)
+        if (hitEnemy)
         {
-            StopGrapple();
+            UpdateGrapplePoint();
         }
     }
 
@@ -62,10 +56,18 @@ public class Shoot : MonoBehaviour
     void StartGrapple()
     {
         RaycastHit2D hit;
-        if (hit = Physics2D.Raycast(player.position, pointToCursor.rotateTarget, maxDist, grappleableSurface))
+        if (hit = Physics2D.Raycast(player.position, pointToCursor.rotateTarget, maxDist, grappleableSurface)) // rotateTarget will always be the mouse position in this case
         {
+            if (hit.collider.CompareTag("GrappleableEnemy"))
+            {
+                hitEnemy = hit.collider.transform;
+            }
+            else
+            {
+                hitEnemy = null;
+            }
+
             isGrappling = true;
-            state = Grapple.FirstClick;
 
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint2D>();
@@ -93,6 +95,7 @@ public class Shoot : MonoBehaviour
 
     void DrawRope()
     {
+        // if the SpringJoint2D doesn't exist (not grappling), then don't bother drawing the rope
         if (!joint) return;
 
         lineRenderer.SetPosition(0, shootPoint.position);
@@ -102,11 +105,18 @@ public class Shoot : MonoBehaviour
     void StopGrapple()
     {
         isGrappling = false;
-        state = Grapple.NotGrappling;
         player.GetComponent<PlayerMovement>().wasGrappling = true;
 
         lineRenderer.positionCount = 0;
         Destroy(joint);
+    }
+
+    void UpdateGrapplePoint()
+    {
+        if (!joint) return;
+
+        grapplePoint = hitEnemy.position;
+        joint.connectedAnchor = grapplePoint;
     }
 
     public Vector2 GetGrapplePoint()

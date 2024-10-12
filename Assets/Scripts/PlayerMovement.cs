@@ -10,7 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [Space]
     public float moveSpeed;
     public float jumpForce;
-    public float swingSpeedMod, airSpeedMod, airFriction;
+    public float swingSpeedMod, airSpeedMod;
+    [Range(0f, 1f)]
+    public float airFriction;
 
     bool grounded;
     public bool wasGrappling;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0f)
         {
+            // holding jump for longer causes a slightly higher jump
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
@@ -35,11 +38,13 @@ public class PlayerMovement : MonoBehaviour
         {
             wasGrappling = false;
         }
+        // turn around if pointing left
         GetComponent<SpriteRenderer>().flipX = shoot.pointToCursor.rotateTarget.x < 0;
     }
 
     void FixedUpdate()
     {
+        // move differently depending on current state
         if (shoot.isGrappling)
         {
             rb.velocity += new Vector2(movement * moveSpeed * swingSpeedMod, 0f);
@@ -52,6 +57,14 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.velocity = new Vector2(movement * moveSpeed, rb.velocity.y);
+        }
+    }
+
+    public void Bounce(int bounceStrength)
+    {
+        if (rb.velocity.y < 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, bounceStrength);
         }
     }
 }
