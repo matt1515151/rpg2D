@@ -1,3 +1,4 @@
+using System;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -60,11 +61,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Bounce(int bounceStrength)
+    public void Bounce(int bounceStrength, Action onBounce)
     {
         if (rb.velocity.y < 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, bounceStrength);
+
+            onBounce();
         }
     }
 }

@@ -6,6 +6,7 @@ public class EnemyWalk : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public int bounceStrength = 30;
+    public bool grappleable;
     bool movingRight = true;
 
     void FixedUpdate()
@@ -23,7 +24,8 @@ public class EnemyWalk : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerMovement>().Bounce(bounceStrength);
+            collision.GetComponent<PlayerMovement>().Bounce(bounceStrength,
+                () => { GetComponent<Animator>().Play("bounce"); });
         }
     }
 }
