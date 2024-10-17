@@ -90,5 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4c753191777d745bf40c4d3b5a487e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneChanger: {fileID: 0}
-  changeToScene: 
+  changeToScene: 0
+  targetSpawn: 0
+  animID: 0
+  boxCollider: {fileID: 402442268314236918}

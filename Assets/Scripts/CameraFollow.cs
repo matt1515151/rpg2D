@@ -11,6 +11,9 @@ public class CameraFollow : MonoBehaviour
     public float mouseMoveAmount = 0.5f; // how much the mouse should move the camera by
     public float maxMouseMove = 6f;      // the furthest that the mouse will move the camera
 
+    public Rect cameraBounds;
+    public Vector2 cameraSize = new(18f, 10f);
+
     void Update()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -30,6 +33,33 @@ public class CameraFollow : MonoBehaviour
             diff *= Time.deltaTime;
             transform.position += (Vector3)diff;
         }
+
+        Vector2 cameraView = new(
+            Camera.main.orthographicSize,
+            Camera.main.orthographicSize * Screen.width / Screen.height
+            );
+
+        transform.position = new Vector3(
+            Mathf.Clamp(transform.position.x,
+            cameraBounds.xMin + cameraSize.x / 2,
+            cameraBounds.xMax - cameraSize.x / 2),
+
+            Mathf.Clamp(transform.position.y,
+            cameraBounds.yMin + cameraSize.y / 2,
+            cameraBounds.yMax - cameraSize.y / 2),
+
+            -10f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        // hehe funny box
+
+        Gizmos.color = Color.gray;
+        Gizmos.DrawLine(new Vector3(cameraBounds.xMin, cameraBounds.yMin), new Vector3(cameraBounds.xMax, cameraBounds.yMin));
+        Gizmos.DrawLine(new Vector3(cameraBounds.xMin, cameraBounds.yMin), new Vector3(cameraBounds.xMin, cameraBounds.yMax));
+        Gizmos.DrawLine(new Vector3(cameraBounds.xMin, cameraBounds.yMax), new Vector3(cameraBounds.xMax, cameraBounds.yMax));
+        Gizmos.DrawLine(new Vector3(cameraBounds.xMax, cameraBounds.yMin), new Vector3(cameraBounds.xMax, cameraBounds.yMax));
     }
 
     private void Start()

@@ -18,7 +18,6 @@ public class SceneChanger : MonoBehaviour
     {
         StartCoroutine(LoadScene(sceneIndex, animID));
         targetSpawnPoint = targetSpawn;
-        
     }
 
     IEnumerator LoadScene(int sceneIndex, int animID)
@@ -29,6 +28,12 @@ public class SceneChanger : MonoBehaviour
         SceneManager.LoadScene(sceneIndex);
         transform.Find("fade").GetComponent<Animator>().SetTrigger("End");
     }
+
+    public void StartButton()
+    {
+        ChangeScene(1, 0, 0);
+    }
+
     public void Exit()
     {
         // If we are in the editor
