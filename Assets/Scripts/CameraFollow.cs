@@ -11,8 +11,8 @@ public class CameraFollow : MonoBehaviour
     public float mouseMoveAmount = 0.5f; // how much the mouse should move the camera by
     public float maxMouseMove = 6f;      // the furthest that the mouse will move the camera
 
-    public Rect cameraBounds;
-    public Vector2 cameraSize = new(18f, 10f);
+    public Rect cameraBounds;                   // the camera cannot move beyond these values
+    public Vector2 cameraSize = new(18f, 10f);  // probably dont change
 
     void Update()
     {
@@ -33,11 +33,6 @@ public class CameraFollow : MonoBehaviour
             diff *= Time.deltaTime;
             transform.position += (Vector3)diff;
         }
-
-        Vector2 cameraView = new(
-            Camera.main.orthographicSize,
-            Camera.main.orthographicSize * Screen.width / Screen.height
-            );
 
         transform.position = new Vector3(
             Mathf.Clamp(transform.position.x,
