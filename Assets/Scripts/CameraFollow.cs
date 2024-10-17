@@ -54,12 +54,8 @@ public class CameraFollow : MonoBehaviour
     private void OnDrawGizmos()
     {
         // hehe funny box
-
         Gizmos.color = Color.gray;
-        Gizmos.DrawLine(new Vector3(cameraBounds.xMin, cameraBounds.yMin), new Vector3(cameraBounds.xMax, cameraBounds.yMin));
-        Gizmos.DrawLine(new Vector3(cameraBounds.xMin, cameraBounds.yMin), new Vector3(cameraBounds.xMin, cameraBounds.yMax));
-        Gizmos.DrawLine(new Vector3(cameraBounds.xMin, cameraBounds.yMax), new Vector3(cameraBounds.xMax, cameraBounds.yMax));
-        Gizmos.DrawLine(new Vector3(cameraBounds.xMax, cameraBounds.yMin), new Vector3(cameraBounds.xMax, cameraBounds.yMax));
+        Gizmos.DrawWireCube(cameraBounds.center, cameraBounds.size);
     }
 
     private void Start()

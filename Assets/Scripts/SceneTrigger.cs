@@ -11,7 +11,6 @@ public class SceneTrigger : MonoBehaviour
     public int animID = 0;
 
     public BoxCollider2D boxCollider;
-    Rect cr;
 
     private void Awake()
     {
@@ -30,13 +29,7 @@ public class SceneTrigger : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        cr.size = boxCollider.size;
-        cr.position = (Vector2)transform.position + boxCollider.offset - new Vector2(cr.size.x / 2, cr.size.y / 2);
-
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(new Vector3(cr.xMin, cr.yMin), new Vector3(cr.xMax, cr.yMin));
-        Gizmos.DrawLine(new Vector3(cr.xMin, cr.yMin), new Vector3(cr.xMin, cr.yMax));
-        Gizmos.DrawLine(new Vector3(cr.xMin, cr.yMax), new Vector3(cr.xMax, cr.yMax));
-        Gizmos.DrawLine(new Vector3(cr.xMax, cr.yMin), new Vector3(cr.xMax, cr.yMax));
+        Gizmos.DrawWireCube((Vector2)transform.position + boxCollider.offset, boxCollider.size);
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ground
   - GrappleableEnemy
+  - non grappleable
   layers:
   - Default
   - TransparentFX

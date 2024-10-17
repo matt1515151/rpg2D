@@ -426,7 +426,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7503419, y: 1.0019288}
+  m_Size: {x: 0.7503419, y: 1}
   m_EdgeRadius: 0
 --- !u!50 &3483001106865627599
 Rigidbody2D:
@@ -491,6 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2c561a2fa780e42b49623e92cbae99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneChanger: {fileID: 0}
 --- !u!1 &8817889741483787821
 GameObject:
   m_ObjectHideFlags: 0
