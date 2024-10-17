@@ -127,6 +127,74 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8793578948493163155, guid: 47895e1719b2ac547b2985bb5bd0ad4d, type: 3}
   m_PrefabInstance: {fileID: 8787193240410267555}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &517712224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517712227}
+  - component: {fileID: 517712226}
+  - component: {fileID: 517712225}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &517712225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517712224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &517712226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517712224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &517712227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517712224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &560987065
 GameObject:
   m_ObjectHideFlags: 0
@@ -7274,74 +7342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1407b5fe5ddf5394fbc50c87d93f8955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1234346938
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1234346941}
-  - component: {fileID: 1234346940}
-  - component: {fileID: 1234346939}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1234346939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234346938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1234346940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234346938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1234346941
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1234346938}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1392604191
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,10 +7380,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'anyone else hear that ominous bell tolling????no?? just me?????? '
+  m_text: 'anyone else hear that ominous bell tolling????
+
+    no?? just me?????? '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 98787b6b27e3dcd4ab69fb5fa2aa6e0c, type: 2}
+  m_sharedMaterial: {fileID: 1104123170243308210, guid: 98787b6b27e3dcd4ab69fb5fa2aa6e0c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7407,8 +7409,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6
-  m_fontSizeBase: 6
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7472,7 +7474,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 1104123170243308210, guid: 98787b6b27e3dcd4ab69fb5fa2aa6e0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7747,10 +7749,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1802281488995028310, guid: afb0c39a012e9384cbba2dff491aca01, type: 3}
-      propertyPath: grappleable
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7987784490051178552, guid: afb0c39a012e9384cbba2dff491aca01, type: 3}
       propertyPath: m_Name
       value: ShroomBoy
@@ -7769,12 +7767,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1510066786504900838, guid: cffe2c78428f6534a8048255b81e94a0, type: 3}
+      propertyPath: animID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510066786504900838, guid: cffe2c78428f6534a8048255b81e94a0, type: 3}
       propertyPath: sceneChanger
       value: 
       objectReference: {fileID: 1108196541}
     - target: {fileID: 1510066786504900838, guid: cffe2c78428f6534a8048255b81e94a0, type: 3}
       propertyPath: changeToScene
-      value: world 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4621023659093745283, guid: cffe2c78428f6534a8048255b81e94a0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7835,11 +7837,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4699570498659313416, guid: dd32ec7e30b7b9a4ab6c95f575ea0e89, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.48
+      value: 32.5
       objectReference: {fileID: 0}
     - target: {fileID: 4699570498659313416, guid: dd32ec7e30b7b9a4ab6c95f575ea0e89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71
+      value: 10.33
       objectReference: {fileID: 0}
     - target: {fileID: 4699570498659313416, guid: dd32ec7e30b7b9a4ab6c95f575ea0e89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7943,15 +7945,15 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1108196540}
   - {fileID: 775884866}
   - {fileID: 8787193240410267555}
-  - {fileID: 1234346941}
   - {fileID: 1892098394}
   - {fileID: 560987068}
   - {fileID: 7253969046046697855}
   - {fileID: 59251772634110301}
   - {fileID: 8400011360214320275}
-  - {fileID: 1108196540}
   - {fileID: 8582512125841681180}
   - {fileID: 822883164}
   - {fileID: 966501197}
+  - {fileID: 517712227}

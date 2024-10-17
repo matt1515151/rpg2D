@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneTrigger : MonoBehaviour
 {
     SceneChanger sceneChanger;
-    public string changeToScene;
+    public int changeToScene;
     public int targetSpawn;
+    public int animID = 0;
 
     private void Awake()
     {
@@ -18,7 +19,7 @@ public class SceneTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            sceneChanger.ChangeScene(changeToScene, targetSpawn);
+            sceneChanger.ChangeScene(changeToScene, targetSpawn, animID);
         }
     }
 }

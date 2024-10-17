@@ -31,4 +31,9 @@ public class CameraFollow : MonoBehaviour
             transform.position += (Vector3)diff;
         }
     }
+
+    private void Start()
+    {
+        transform.position = new Vector3(followTarget.position.x, followTarget.position.y, -10f);
+    }
 }
