@@ -6,7 +6,6 @@ public class EnemyWalk : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public int bounceStrength = 30;
-    public bool grappleable;
     bool movingRight = true;
 
     void FixedUpdate()
@@ -17,7 +16,7 @@ public class EnemyWalk : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        if (collision.gameObject.CompareTag("Ground"))
         { 
             // turn around when hitting a wall
             movingRight = !movingRight;

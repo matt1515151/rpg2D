@@ -58,19 +58,15 @@ public class Shoot : MonoBehaviour
         RaycastHit2D hit;
         if (hit = Physics2D.Raycast(player.position, pointToCursor.rotateTarget, maxDist, grappleableSurface)) // rotateTarget will always be the mouse position in this case
         {
-            if (hit.collider.CompareTag("non grappleable"))
+            if (hit.collider.CompareTag("NonGrapple"))
             {
                 isGrappling = false;
                 return;
             }
 
-            if (hit.collider.TryGetComponent<EnemyWalk>(out EnemyWalk enemy))
+            if (hit.collider.CompareTag("GrappleableEnemy") || hit.collider.CompareTag("GrapplePoint"))
             {
-                // if its a grappleable enemy, grapple to it
-                if (enemy.grappleable)
-                {
-                    hitEnemy = hit.collider.transform;
-                }
+                hitEnemy = hit.collider.transform;
             }
             else
             {
