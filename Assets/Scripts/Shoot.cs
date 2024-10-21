@@ -10,6 +10,7 @@ public class Shoot : MonoBehaviour
     Vector2 grapplePoint;
     SpringJoint2D joint;
     Transform hitEnemy;
+    PlayerInfo playerInfo;
 
     public PointToCursor pointToCursor;
     public LayerMask grappleableSurface;
@@ -25,26 +26,30 @@ public class Shoot : MonoBehaviour
 
     void Awake()
     {
+        playerInfo = FindAnyObjectByType<PlayerInfo>();
         lineRenderer = GetComponent<LineRenderer>();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (playerInfo.hasHook)
         {
-            StartGrapple();
-        }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            StopGrapple();
-        }
-        if (Input.GetMouseButton(1) && isGrappling)
-        {
-            Retract();
-        }
-        if (hitEnemy)
-        {
-            UpdateGrapplePoint();
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartGrapple();
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                StopGrapple();
+            }
+            if (Input.GetMouseButton(1) && isGrappling)
+            {
+                Retract();
+            }
+            if (hitEnemy)
+            {
+                UpdateGrapplePoint();
+            }
         }
     }
 
@@ -128,5 +133,10 @@ public class Shoot : MonoBehaviour
     public Vector2 GetGrapplePoint()
     {
         return grapplePoint;
+    }
+
+    public void ShowHook()
+    {
+        transform.Find("Gun").GetComponent<SpriteRenderer>().enabled = true;
     }
 }

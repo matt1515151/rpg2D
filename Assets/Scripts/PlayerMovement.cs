@@ -61,6 +61,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Pickup"))
+        {
+            if(collision.GetComponent<Pickup>().pickupType == PickupType.GrappleGun)
+            {
+                FindAnyObjectByType<PlayerInfo>().hasHook = true;
+                shoot.ShowHook();
+            }
+
+            // pickup animation
+            Destroy(collision.gameObject);
+        }
+    }
+
     public void Bounce(int bounceStrength, Action onBounce)
     {
         if (rb.velocity.y < 0f)

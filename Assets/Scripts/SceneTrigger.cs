@@ -15,15 +15,16 @@ public class SceneTrigger : MonoBehaviour
     private void Awake()
     {
         sceneChanger = FindFirstObjectByType<SceneChanger>();
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            sceneChanger.ChangeScene(changeToScene, targetSpawn, animID);
+            if (!sceneChanger.isAnimating)
+            {
+                sceneChanger.ChangeScene(changeToScene, targetSpawn, animID);
+            }
         }
     }
 

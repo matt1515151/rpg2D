@@ -7,6 +7,8 @@ public class PlayerSpawn : MonoBehaviour
     public SceneChanger sceneChanger;
     private void Awake()
     {
+        transform.Find("hook").Find("Gun").GetComponent<SpriteRenderer>().enabled = FindAnyObjectByType<PlayerInfo>().hasHook;
+
         sceneChanger = FindFirstObjectByType<SceneChanger>();
 
         SpawnPoint[] spawnPoints = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);

@@ -9,6 +9,7 @@ public class SceneChanger : MonoBehaviour
     public float fadeTime = 1f;
     [Space]
     public AnimatorOverrideController[] animOverrides;
+    [HideInInspector] public bool isAnimating;
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -22,16 +23,20 @@ public class SceneChanger : MonoBehaviour
 
     IEnumerator LoadScene(int sceneIndex, int animID)
     {
+        isAnimating = true;
+
         animator.runtimeAnimatorController = animOverrides[animID];
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(sceneIndex);
         transform.Find("fade").GetComponent<Animator>().SetTrigger("End");
+
+        isAnimating = false;
     }
 
     public void StartButton()
     {
-        ChangeScene(1, 0, 0);
+        ChangeScene(1, 0, 2);
     }
 
     public void Exit()
