@@ -66,7 +66,7 @@ MonoBehaviour:
   pointToCursor: {fileID: 1402458437997909495}
   grappleableSurface:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
   shootPoint: {fileID: 6014135271916046838}
   player: {fileID: 8793578948493163155}
   maxDist: 10
@@ -307,6 +307,7 @@ GameObject:
   - component: {fileID: 3483001106865627599}
   - component: {fileID: 286186354351022692}
   - component: {fileID: 1632235797103385613}
+  - component: {fileID: 6217580515238641488}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -492,6 +493,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneChanger: {fileID: 0}
+--- !u!95 &6217580515238641488
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2472211260647415078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0fe4c4af83260a34b9f3240d10f38dd4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8817889741483787821
 GameObject:
   m_ObjectHideFlags: 0

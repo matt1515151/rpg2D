@@ -18,6 +18,12 @@ public class PlayerMovement : MonoBehaviour
     bool grounded;
     public bool wasGrappling;
     float movement;
+    Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -41,6 +47,19 @@ public class PlayerMovement : MonoBehaviour
         }
         // turn around if pointing left
         GetComponent<SpriteRenderer>().flipX = shoot.pointToCursor.rotateTarget.x < 0;
+
+        if (rb.velocity.y < -0.1f || rb.velocity.y > 0.1f)
+        {
+            animator.Play("jump");
+        }
+        else if (Input.GetButton("Horizontal"))
+        {
+            animator.Play("run");
+        }
+        else
+        {
+            animator.Play("idle");
+        }
     }
 
     void FixedUpdate()

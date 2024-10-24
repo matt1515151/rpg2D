@@ -147,7 +147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   bounceStrength: 25
-  grappleable: 0
+  ground:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!50 &5634148473633062088
 Rigidbody2D:
   serializedVersion: 4
