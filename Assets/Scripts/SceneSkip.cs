@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 
 public class SceneSkip : MonoBehaviour
 {
-    System.Random rand = new();
     public TMP_Dropdown dropdown;
     public int skipScene;
 
