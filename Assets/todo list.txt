@@ -1,0 +1,19 @@
+- hazards + respawning /
+	- spike texture /
+	- onentertrigger2d /
+		- play death animation /
+		- play transition /
+		- go back to spawnpoint /
+
+
+- aim indicator /
+	- make 3 indicator sprites /
+	- constantly check where aiming /
+		- hit ground, normal indicator /
+		- hit nograpple, red indicator /
+		- hit enemy, circle it /
+	- put the indicator on the ground where it hits /
+
+
+- make longer
+	- uhhhh....

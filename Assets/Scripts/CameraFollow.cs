@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -5,7 +6,7 @@ public class CameraFollow : MonoBehaviour
     public Transform followTarget;
     [Space]
     public float camSpeed = 0.5f;
-    public float yOffset = 2f;    // push the camera above or below its target
+    public Vector2 Offset = new(0f, 0f);    // offset from target
     public float deadZone = 1f;   // camera wont move within this range of its target
     [Range(0f, 1f)]
     public float mouseMoveAmount = 0.5f; // how much the mouse should move the camera by
@@ -23,7 +24,7 @@ public class CameraFollow : MonoBehaviour
         
         Vector2 diff = followTarget.position - transform.position;
 
-        diff.y += yOffset;
+        diff += Offset;
         diff += mousePos;
 
         if (diff.magnitude > deadZone)
@@ -56,5 +57,11 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         transform.position = new Vector3(followTarget.position.x, followTarget.position.y, -10f);
+    }
+
+    // for respawning, mainly
+    public void InstantMove()
+    {
+        transform.position = followTarget.position;
     }
 }

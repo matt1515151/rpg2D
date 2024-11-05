@@ -17,8 +17,8 @@ public class SceneChanger : MonoBehaviour
 
     public void ChangeScene(int sceneIndex, int targetSpawn, int animID)
     {
-        StartCoroutine(LoadScene(sceneIndex, animID));
         targetSpawnPoint = targetSpawn;
+        StartCoroutine(LoadScene(sceneIndex, animID));
     }
 
     IEnumerator LoadScene(int sceneIndex, int animID)
@@ -26,6 +26,9 @@ public class SceneChanger : MonoBehaviour
         isAnimating = true;
 
         animator.runtimeAnimatorController = animOverrides[animID];
+
+        Debug.Log($"moving to scene {sceneIndex} at spawnpoint {targetSpawnPoint} + with animation {animator.runtimeAnimatorController.name}");
+
         animator.SetTrigger("Start");
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(sceneIndex);
@@ -48,5 +51,22 @@ public class SceneChanger : MonoBehaviour
 #else
            Application.Quit();
 #endif
+    }
+
+    public void PlayAnimation(string animationType, int animID)
+    {
+        animator.runtimeAnimatorController = animOverrides[animID];
+        if(animationType == "in")
+        {
+            animator.SetTrigger("Start");
+        }
+        else if(animationType == "out")
+        {
+            animator.SetTrigger("End");
+        }
+        else
+        {
+            throw new System.Exception("FUCK YOU");
+        }
     }
 }

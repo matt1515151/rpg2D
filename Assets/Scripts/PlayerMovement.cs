@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         // turn around if pointing left
         GetComponent<SpriteRenderer>().flipX = shoot.pointToCursor.rotateTarget.x < 0;
 
-        if (rb.velocity.y < -0.1f || rb.velocity.y > 0.1f)
+        if (MathF.Abs(rb.velocity.y) > 0.1f)
         {
             animator.Play("jump");
         }
@@ -90,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
                 shoot.ShowHook();
             }
 
-            // pickup animation
             Destroy(collision.gameObject);
         }
     }

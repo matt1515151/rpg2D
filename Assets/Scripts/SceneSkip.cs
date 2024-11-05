@@ -9,7 +9,10 @@ public class SceneSkip : MonoBehaviour
 {
     public TMP_Dropdown dropdown;
     public int skipScene;
+    public int skipSpawn;
+    public GameObject skipButtons;
 
+    int skipUnlock = 0;
     SceneChanger sceneChanger;
 
     private void Start()
@@ -25,12 +28,26 @@ public class SceneSkip : MonoBehaviour
         dropdown.AddOptions(options);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            skipUnlock++;
+            if(skipUnlock == 3)
+            {
+                Debug.Log("ultimat hax0r mode enabled B)");
+
+                skipButtons.SetActive(true);
+            }
+        }
+    }
+
     public void SkipScene()
     {
-        skipScene = Convert.ToInt32(transform.Find("Skip Button").Find("Input").GetComponent<TMP_InputField>().text);
+        skipScene = Convert.ToInt32(transform.Find("Skip Button").Find("scene id").GetComponent<TMP_InputField>().text);
+        skipSpawn = Convert.ToInt32(transform.Find("Skip Button").Find("spawnpoinr").GetComponent<TMP_InputField>().text);
 
-        Debug.Log("skipping to scene " + skipScene);
-        sceneChanger.ChangeScene(skipScene, 0, dropdown.value);
+        sceneChanger.ChangeScene(skipScene, skipSpawn, dropdown.value);
     }
 
     public void EnableHook()

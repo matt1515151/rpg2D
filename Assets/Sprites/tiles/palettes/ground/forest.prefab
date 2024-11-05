@@ -352,6 +352,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 7, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 72
+      m_TileSpriteIndex: 72
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 8, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 72
+      m_TileSpriteIndex: 72
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -9, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -908,6 +928,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 723f6444e7b53b044ba37a3a819149c1, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 4ac611f9fe0b1a944ac1bc7617cbe0a7, type: 2}
+  - m_RefCount: 2
+    m_Data: {fileID: 11400000, guid: d1b741bf2385a8343b84349363c12dc2, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: -1348258061, guid: a461257461018964189d4aac60d9c6d3, type: 3}
@@ -1053,8 +1075,10 @@ Tilemap:
     m_Data: {fileID: 878500166, guid: a461257461018964189d4aac60d9c6d3, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1494069868, guid: a461257461018964189d4aac60d9c6d3, type: 3}
+  - m_RefCount: 2
+    m_Data: {fileID: 21300000, guid: bdc5cb340c14bd046a94a9f98145b782, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 72
+  - m_RefCount: 74
     m_Data:
       e00: 1
       e01: 0
@@ -1073,7 +1097,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 72
+  - m_RefCount: 74
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1159,7 +1183,7 @@ GameObject:
   - component: {fileID: 513335660464962831}
   - component: {fileID: 6956187226311584725}
   m_Layer: 0
-  m_Name: ground
+  m_Name: forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1193,7 +1217,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &7669125705873766312
+--- !u!114 &1391432627823895436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

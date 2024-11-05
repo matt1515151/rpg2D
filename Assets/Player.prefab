@@ -75,6 +75,11 @@ MonoBehaviour:
   dampingRatio: 0
   frequency: 0
   isGrappling: 0
+  indicators:
+  - {fileID: -4291073, guid: c3818463fa786b1408fd96ccdc4fbbd6, type: 3}
+  - {fileID: 803062200, guid: c3818463fa786b1408fd96ccdc4fbbd6, type: 3}
+  - {fileID: -703192462, guid: c3818463fa786b1408fd96ccdc4fbbd6, type: 3}
+  indicator: {fileID: 7447655872230323670, guid: e2b3b1c8d9b597a43aee4393d5ec482d, type: 3}
 --- !u!120 &6483182667435192428
 LineRenderer:
   serializedVersion: 2
@@ -493,6 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneChanger: {fileID: 0}
+  deathSceneAnim: 2
 --- !u!95 &6217580515238641488
 Animator:
   serializedVersion: 5

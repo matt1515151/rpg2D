@@ -24,16 +24,25 @@ public class Shoot : MonoBehaviour
 
     public bool isGrappling;
 
+    Transform indicatedEnemy;
+    SpriteRenderer indicatorSR;
+
+    public Sprite[] indicators = new Sprite[3];
+    public GameObject indicator;
+
     void Awake()
     {
         playerInfo = FindAnyObjectByType<PlayerInfo>();
         lineRenderer = GetComponent<LineRenderer>();
+        indicatorSR = Instantiate(indicator).GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         if (playerInfo.hasHook)
         {
+            GrappleIndicator();
+
             if (Input.GetMouseButtonDown(0))
             {
                 StartGrapple();
@@ -69,7 +78,7 @@ public class Shoot : MonoBehaviour
                 return;
             }
 
-            if (hit.collider.CompareTag("GrappleableEnemy") || hit.collider.CompareTag("GrapplePoint"))
+            if (hit.collider.CompareTag("GrappleableEnemy"))
             {
                 hitEnemy = hit.collider.transform;
             }
@@ -138,5 +147,45 @@ public class Shoot : MonoBehaviour
     public void ShowHook()
     {
         transform.Find("Gun").GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    void GrappleIndicator()
+    {
+        if (isGrappling)
+        {
+            indicatorSR.sprite = null;
+            return;
+        }
+        RaycastHit2D hit;
+        if (hit = Physics2D.Raycast(player.position, pointToCursor.rotateTarget, maxDist, grappleableSurface)) // rotateTarget will always be the mouse position in this case
+        {
+            if (hit.collider.CompareTag("GrappleableEnemy"))
+            {
+                indicatedEnemy = hit.collider.transform;
+
+                indicatorSR.sprite = indicators[2];
+                indicatorSR.transform.position = indicatedEnemy.transform.position;
+                return;
+            }
+            else
+            {
+                indicatedEnemy = null;
+            }
+
+            // if it doesn't hit an enemy
+            if (hit.collider.CompareTag("NonGrapple"))
+            {
+                indicatorSR.sprite = indicators[1];
+            }
+            else
+            {
+                indicatorSR.sprite = indicators[0];
+            }
+            indicatorSR.transform.position = hit.point;
+        }
+        else
+        {
+            indicatorSR.sprite = null;
+        }
     }
 }
