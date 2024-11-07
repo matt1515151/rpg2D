@@ -12,6 +12,7 @@ public class SceneChanger : MonoBehaviour
     [HideInInspector] public bool isAnimating;
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080, false);
         DontDestroyOnLoad(gameObject);
     }
 
